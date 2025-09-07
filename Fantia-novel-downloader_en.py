@@ -273,23 +273,41 @@ def main():
         print(f"INFO: Download scope: '{scope}'")
 
         # Process each URL sequentially
-        for url in urls:
-            post_ids = get_all_post_ids(url, base_headers, delay)
-            if not post_ids:
-                print(f"WARN: Skipping URL due to failure in post ID collection: {url}")
-                continue
+        for i, url in enumerate(urls, 1):
+            print(f"\n===== Processing URL {i}/{len(urls)}: {url} =====")
             
-            print(f"\n--- [Phase 2] Starting download of {len(post_ids)} individual posts ---")
-            for i, post_id in enumerate(post_ids, 1):
-                print(f"-> Processing: {i}/{len(post_ids)}")
-                scrape_and_save_post_api(post_id, base_headers, csrf_token, root_dir, scope)
-                time.sleep(delay)
+            if '/fanclubs/' in url:
+                # Fan club URL: get all post IDs and loop through them
+                post_ids = get_all_post_ids(url, base_headers, delay)
+                if not post_ids:
+                    print(f"WARN: Failed to retrieve post IDs for the fan club. Skipping.")
+                    continue
+                
+                print(f"\n--- Starting download of {len(post_ids)} individual posts ---")
+                for j, post_id in enumerate(post_ids, 1):
+                    print(f"-> Processing: {j}/{len(post_ids)}")
+                    scrape_and_save_post_api(post_id, base_headers, csrf_token, root_dir, scope)
+                    time.sleep(delay)
+
+            elif '/posts/' in url:
+                # Individual post URL: extract ID and process once
+                try:
+                    path = urlparse(url).path
+                    post_id = int(path.strip('/').split('/')[-1])
+                    print(f"  - Extracted Post ID: {post_id}.")
+                    scrape_and_save_post_api(post_id, base_headers, csrf_token, root_dir, scope)
+                    time.sleep(delay)
+                except (ValueError, IndexError):
+                    print(f"  - ERROR: Could not extract a valid post ID from the URL. Skipping.")
+            
+            else:
+                print(f"WARN: Unsupported URL format. Skipping.")
 
         print("\nAll tasks completed successfully.")
 
     except Exception as e:
         print("\n" + "="*60)
-        print("           An unexpected fatal error occurred")
+        print("           An unexpected error occurred")
         print("="*60)
         traceback.print_exc()
         print("="*60)
