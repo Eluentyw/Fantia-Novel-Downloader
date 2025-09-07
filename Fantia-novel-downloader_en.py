@@ -254,8 +254,8 @@ def main():
             print(f"\nERROR: Invalid 'download_scope' in config.ini: '{scope}'. Must be one of 'all', 'paid', or 'free'.")
             return
 
-        # Load target URLs from DL_links.txt
-        links_file = "DL_links.txt"
+        # Load target URLs from DL-links.txt
+        links_file = "DL-links.txt"
         try:
             with open(links_file, 'r', encoding='utf-8') as f:
                 urls = [line.strip() for line in f if line.strip() and "fantia.jp" in line]
