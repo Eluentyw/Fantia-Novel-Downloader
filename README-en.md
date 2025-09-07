@@ -95,8 +95,8 @@ In this file, list the URLs of the **novel post list pages** for the fan clubs y
 **Example:**
 ```
 https://fantia.jp/fanclubs/123456/posts
-https://fantia.jp/fanclubs/123456/posts?tag=novel
-https://fantia.jp/fanclubs/123456/posts?tag=%E5%B0%8F%E8%AA%AC
+https://fantia.jp/fanclubs/234567/posts?tag=novel
+https://fantia.jp/fanclubs/345678/posts?tag=%E5%B0%8F%E8%AA%AC
 ```
 > **Tip:** The `?tag=...` part is necessary if a fan club uses a specific tag for its novels. If you want to download all posts regardless of tags, remove that part of the URL.
 
@@ -142,6 +142,7 @@ The script will create the `root_output_dir` (default: `fantia_novels`) and gene
 ## 7. License
 
 This project is licensed under the MIT License.
+
 
 
 
