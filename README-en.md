@@ -1,3 +1,6 @@
+> [!NOTE]
+> This is a machine translation and may not be 100% accurate.
+
 # Fantia Novel Downloader v1.1
 
 ## Overview
@@ -75,10 +78,11 @@ These are essential for proving to Fantia's server that you are a legitimate, lo
 1.  Log in to Fantia in your PC web browser (Chrome is recommended).
 2.  Navigate to **any novel post page that you have permission to view**.
 3.  Press `F12` to open the Developer Tools and select the **"Network"** tab.
-4.  Press `F5` to reload the page.
-5.  In the list of requests, find and click on one that looks like `posts/1234567`.
-6.  In the details pane on the right, find the **"Headers"** tab and scroll down to the **"Request Headers"** section.
-7.  Copy the following two values and paste them into your `config.ini`:
+4.  In the filter bar, click on "Fetch/XHR".
+5.  Press `F5` to reload the page.
+6.  From the list of communications that appear, click on an item with a name like 1234567 and confirm that the request URL looks like https://fantia.jp/api/v1/posts/1234567.
+7.  In the details pane on the right, find the **"Headers"** tab and scroll down to the **"Request Headers"** section.
+8.  Copy the following two values and paste them into your `config.ini`:
     *   **`cookie`**: The **entire line** of text, which is very long and contains `_session_id=...`.
     *   **`x-csrf-token`**: The token string, which consists of random-looking characters.
 
@@ -138,5 +142,6 @@ The script will create the `root_output_dir` (default: `fantia_novels`) and gene
 ## 7. License
 
 This project is licensed under the MIT License.
+
 
 
