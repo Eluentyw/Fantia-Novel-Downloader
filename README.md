@@ -7,7 +7,7 @@
 
 ## 概要 (Overview)
 
-これは、クリエイター支援プラットフォーム「Fantia」に投稿された小説コンテンツを、ローカル環境にテキストファイルとして一括で保存するためのPythonスクリプトです。
+これは、クリエイター支援プラットフォーム「Fantia」に投稿されたテキストコンテンツを、ローカル環境にテキストファイルとして一括で保存するためのPythonスクリプトです。
 
 ## 主な機能 (Features)
 
@@ -35,8 +35,8 @@
 
 1.  **リポジトリのクローンまたはダウンロード**
     ```bash
-    git clone https://github.com/your-username/fantia-downloader.git
-    cd fantia-downloader
+    git clone https://github.com/Eluentyw/Fantia-Novel-Downloader.git
+    cd Fantia-Novel-Downloader
     ```
     または、ZIPファイルをダウンロードして任意の場所に展開します。
 
@@ -47,12 +47,12 @@
     ```
 
 3.  **設定ファイルの準備**
-    *   `fantia_scraper.py` と同じ場所に、`DL_links.txt` というテキストファイルを作成します。
+    *   `fantia_scraper.py` と同じ場所に、`DL-links.txt` というテキストファイルを作成します。
     *   初回実行時に `config.ini` が自動生成されます。
 
 ## 3. 設定 (Configuration)
 
-本アプリケーションの動作は、`config.ini` と `DL_links.txt` の2つのファイルによって制御されます。
+本アプリケーションの動作は、`config.ini` と `DL-links.txt` の2つのファイルによって制御されます。
 
 ### 3.1. `config.ini` の設定
 
@@ -60,7 +60,7 @@
 
 ```ini
 [Authentication]
-user_agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+user_agent = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36
 cookie = ここにブラウザからコピーしたCookie文字列を貼り付けてください
 x_csrf_token = ここにブラウザからコピーしたX-Csrf-Tokenを貼り付けてください
 
@@ -89,7 +89,7 @@ request_delay = 1.5
 
 > **Note:** これらの認証情報は、時間経過や再ログインによって無効になる場合があります。プログラムが正常に動作しなくなった場合は、この手順に従って最新の情報を再取得・再設定してください。
 
-### 3.2. `DL_links.txt` の設定
+### 3.2. `DL-links.txt` の設定
 
 このファイルに、ダウンロード対象としたいファンクラブの**小説一覧ページのURL**を、1行に1つずつ記述します。
 
@@ -102,13 +102,13 @@ https://fantia.jp/fanclubs/654321/posts?tag=%E5%B0%8F%E8%AA%AC
 
 ## 4. 実行 (Usage)
 
-すべての設定が完了したら、ターミナルまたはコマンドプロンプトで以下のコマンドを実行します。
+すべての設定が完了したら、Fantia-novel-downloader_ja.pyをダブルクリックして実行するか、ターミナルまたはコマンドプロンプトで以下のコマンドを入力します。
 
 ```bash
-python fantia_scraper.py
+python Fantia-novel-downloader_ja.py
 ```
 
-プログラムが起動し、`DL_links.txt` に記載されたURLを順番に処理していきます。
+プログラムが起動し、`DL-links.txt` に記載されたURLを順番に処理していきます。
 
 ## 5. 出力構造 (Output Structure)
 
@@ -118,7 +118,7 @@ python fantia_scraper.py
 .
 ├── fantia_scraper.py
 ├── config.ini
-├── DL_links.txt
+├── DL-links.txt
 │
 └── fantia_novels/
     ├── ファンクラブA (作者名A)/
@@ -137,7 +137,7 @@ python fantia_scraper.py
 *   **投稿の取得でエラーが多発する**:
     *   `config.ini` の `x_csrf_token` が古い可能性があります。`cookie` と同様に、最新の値を再設定してください。
 *   **特定のファンクラブの投稿が一件も見つからない**:
-    *   `DL_links.txt` に記述したURLが正しいか確認してください。特に、小説に特殊なタグが使われている場合は、そのタグを含めたURLを指定する必要があります。
+    *   `DL-links.txt` に記述したURLが正しいか確認してください。
 
 ## 7. ライセンス (License)
 
