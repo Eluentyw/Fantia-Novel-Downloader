@@ -99,7 +99,7 @@ request_delay = 1.5
 https://fantia.jp/fanclubs/123456/posts
 https://fantia.jp/fanclubs/654321/posts?tag=%E5%B0%8F%E8%AA%AC
 ```
-> **Tip:** `?tag=%E5%B0%8F%E8%AA%AC` の部分は、そのファンクラブが小説に特定のタグを使用している場合に必要です。タグで絞り込まない場合は、`https://fantia.jp/fanclubs/98765/posts` のように、URLからタグ部分を削除してください。
+> **Tip:** `?tag=%E5%B0%8F%E8%AA%AC` の部分は、そのファンクラブが小説に特定のタグを使用している場合に必要です。タグで絞り込まない場合は、`https://fantia.jp/fanclubs/123456/posts` のように、URLからタグ部分を削除してください。
 
 ## 4. 実行 (Usage)
 
