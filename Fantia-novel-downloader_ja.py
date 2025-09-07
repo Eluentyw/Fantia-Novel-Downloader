@@ -253,8 +253,8 @@ def main():
             print(f"\nERROR: config.ini の 'download_scope' の値が無効です ('{scope}')。'all', 'paid', 'free' のいずれかを指定してください。")
             return
 
-        # DL_links.txt の読み込み
-        links_file = "DL_links.txt"
+        # DL-links.txt の読み込み
+        links_file = "DL-links.txt"
         try:
             with open(links_file, 'r', encoding='utf-8') as f:
                 urls = [line.strip() for line in f if line.strip() and "fantia.jp" in line]
