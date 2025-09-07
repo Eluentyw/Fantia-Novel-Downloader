@@ -272,23 +272,41 @@ def main():
         print(f"INFO: ダウンロードスコープ: '{scope}'")
 
         # 各URLを順番に処理
-        for url in urls:
-            post_ids = get_all_post_ids(url, base_headers, delay)
-            if not post_ids:
-                print(f"WARN: {url} の処理をスキップします（投稿ID取得失敗）。")
-                continue
+        for i, url in enumerate(urls, 1):
+            print(f"\n===== URL {i}/{len(urls)} の処理を開始: {url} =====")
             
-            print(f"\n--- [Phase 2] {len(post_ids)}件の個別投稿ダウンロードを開始 ---")
-            for i, post_id in enumerate(post_ids, 1):
-                print(f"-> 処理中: {i}/{len(post_ids)}")
-                scrape_and_save_post_api(post_id, base_headers, csrf_token, root_dir, scope)
-                time.sleep(delay)
+            if '/fanclubs/' in url:
+                # ファンクラブURLの場合：全投稿IDを取得してループ処理
+                post_ids = get_all_post_ids(url, base_headers, delay)
+                if not post_ids:
+                    print(f"WARN: ファンクラブの投稿IDを取得できなかったため、スキップします。")
+                    continue
+                
+                print(f"\n--- {len(post_ids)}件の個別投稿ダウンロードを開始 ---")
+                for j, post_id in enumerate(post_ids, 1):
+                    print(f"-> 処理中: {j}/{len(post_ids)}")
+                    scrape_and_save_post_api(post_id, base_headers, csrf_token, root_dir, scope)
+                    time.sleep(delay)
 
-        print("\n全ての処理が正常に完了しました。")
+            elif '/posts/' in url:
+                # 個別投稿URLの場合：IDを抽出し、単一処理
+                try:
+                    path = urlparse(url).path
+                    post_id = int(path.strip('/').split('/')[-1])
+                    print(f"  - 投稿ID: {post_id} を抽出しました。")
+                    scrape_and_save_post_api(post_id, base_headers, csrf_token, root_dir, scope)
+                    time.sleep(delay)
+                except (ValueError, IndexError):
+                    print(f"  - ERROR: URLから有効な投稿IDを抽出できませんでした。スキップします。")
+            
+            else:
+                print(f"WARN: サポートされていないURL形式です。スキップします。")
+
+        print("\n全ての処理が完了しました。")
 
     except Exception as e:
         print("\n" + "="*60)
-        print("           予期せぬ致命的なエラーが発生しました")
+        print("           予期せぬエラーが発生しました")
         print("="*60)
         traceback.print_exc()
         print("="*60)
