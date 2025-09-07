@@ -42,12 +42,12 @@ This is a Python script designed to download novel posts from the creator suppor
     ```
 
 3.  **Prepare configuration files**
-    *   In the same directory as `fantia_scraper.py`, create a text file named `DL_links.txt`.
+    *   In the same directory as `Fantia-novel-downloader_en.py`, create a text file named `DL-links.txt`.
     *   The `config.ini` file will be generated automatically on the first run.
 
 ## 3. Configuration
 
-The application's behavior is controlled by two files: `config.ini` and `DL_links.txt`. **You do not need to edit the main script (`fantia_scraper.py`).**
+The application's behavior is controlled by two files: `config.ini` and `DL-links.txt`. **You do not need to edit the main script (`Fantia-novel-downloader_en.py`).**
 
 ### 3.1. `config.ini` Settings
 
@@ -84,7 +84,7 @@ These are essential for proving to Fantia's server that you are a legitimate, lo
 
 > **Note:** These credentials may expire over time or after logging out. If the script stops working, repeat these steps to get the latest values.
 
-### 3.2. `DL_links.txt` Settings
+### 3.2. `DL-links.txt` Settings
 
 In this file, list the URLs of the **novel post list pages** for the fan clubs you want to download from. Place one URL per line.
 
@@ -101,10 +101,10 @@ https://fantia.jp/fanclubs/98765/posts
 Once all configuration is complete, run the script from your terminal or command prompt:
 
 ```bash
-python fantia_scraper.py
+python Fantia-novel-downloader_en.py
 ```
 
-The program will start and process each URL listed in `DL_links.txt`.
+The program will start and process each URL listed in `DL-links.txt`.
 
 ## 5. Output Structure
 
@@ -112,9 +112,9 @@ The script will create the `root_output_dir` (default: `fantia_novels`) and gene
 
 ```
 .
-├── fantia_scraper.py
+├── Fantia-novel-downloader_en.py
 ├── config.ini
-├── DL_links.txt
+├── DL-links.txt
 │
 └── fantia_novels/
     ├── Fanclub A (Creator A)/
@@ -133,9 +133,10 @@ The script will create the `root_output_dir` (default: `fantia_novels`) and gene
 *   **Errors occur while fetching individual posts**:
     *   The `x_csrf_token` in `config.ini` may have expired. Set the latest value, just like the `cookie`.
 *   **No posts are found for a specific fan club**:
-    *   Check the URL in `DL_links.txt`. Ensure it points to the correct post list page, including any specific tags the creator might be using for novels.
+    *   Check the URL in `DL-links.txt`. Ensure it points to the correct post list page, including any specific tags the creator might be using for novels.
 
 ## 7. License
 
 This project is licensed under the MIT License.
+
 
