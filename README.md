@@ -47,7 +47,7 @@
     ```
 
 3.  **設定ファイルの準備**
-    *   `fantia_scraper.py` と同じ場所に、`DL-links.txt` というテキストファイルを作成します。
+    *   `Fantia-novel-downloader_ja.py` と同じ場所に、`DL-links.txt` というテキストファイルを作成します。
     *   初回実行時に `config.ini` が自動生成されます。
 
 ## 3. 設定 (Configuration)
@@ -116,7 +116,7 @@ python Fantia-novel-downloader_ja.py
 
 ```
 .
-├── fantia_scraper.py
+├── Fantia-novel-downloader_ja.py
 ├── config.ini
 ├── DL-links.txt
 │
